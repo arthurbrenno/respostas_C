@@ -1,6 +1,10 @@
 // Questao #1:
 #include <stdio.h>
 
+/**
+ * Aqui estou definindo as informacoes
+ * relevantes para essa questao
+ */
 struct habitante {
     int idade;
     char cor_dos_olhos;
@@ -8,6 +12,9 @@ struct habitante {
     char cor_dos_cabelos;
 };
 
+/**
+ * Essa funcao vai ler o vetor de habitantes
+ */
 void ler_vetor(struct habitante* vetor_habitantes) {
     for (int i = 0; i < 5; i++) {
         printf("Sexo: ");
@@ -25,17 +32,14 @@ void ler_vetor(struct habitante* vetor_habitantes) {
 }
 
 void media_idade_com_olhos_castanhos_e_pretos(struct habitante habitantes[5]) {
-    int soma_das_idades = 0;
+    
+    //duas variaveis pra controlar dentro do laço de repeticao abaixo
+    int soma_das_idades       = 0;
     int quantidade_de_pessoas = 0;
 
     for (int i = 0; i < 5; i++) {
-
-        /*
-         * criei a variavel abaixo
-         * so pra vc entender.
-         * eu poderia falar habitantes[i]
-         * dentro do if direto.
-         */
+        
+        //criei a variavel abaixo so pra vc entender. eu poderia falar "habitantes[i]" dentro do if direto.
         struct habitante habitante_atual = habitantes[i];
 
         if (habitante_atual.cor_dos_olhos == 'C' && habitante_atual.cor_dos_cabelos == 'P') {
@@ -43,25 +47,34 @@ void media_idade_com_olhos_castanhos_e_pretos(struct habitante habitantes[5]) {
             soma_das_idades += habitante_atual.idade;
         }
     }
-
+    
+    //sempre que for dividir dois "int"s. converta um pelo menos para float e troque %d por %f
     printf("A media eh: %f", soma_das_idades / (float)quantidade_de_pessoas);
 }
 
 int obter_maior_idade(struct habitante habitantes[5]) {
+    //qualquer idade digitada inicialmente vai ser maior que -1, entao posso comparar depois.
     int maior_idade_do_grupo = -1;
 
     for (int i = 0; i < 5; i++) {
+        
         struct habitante habitante_atual = habitantes[i];
         if (habitante_atual.idade > maior_idade_do_grupo) {
             maior_idade_do_grupo = habitante_atual.idade;
         }
+        
     }
-    return maior_idade_do_grupo;
+    
+    //"retorne" a maior idade do grupo (int)
+    return maior_idade_do_grupo; 
 }
 
 int obter_qtd_de_indiv_entre_18_e_35(struct habitante habitantes[5]) {
 
+    //pra controlar a quantidade de individuos:
     int contador = 0;
+    
+    
     for (int i = 0; i < 5; i++) {
         struct habitante habitante_atual = habitantes[i];
 
@@ -70,7 +83,8 @@ int obter_qtd_de_indiv_entre_18_e_35(struct habitante habitantes[5]) {
         }
 
     }
-
+    
+    //"retorne" o contador (individuos entre 18 e 35 com cabelos louros e olhos azuis). (int)
     return contador;
 }
 
