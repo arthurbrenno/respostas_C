@@ -2,10 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 int main() {
+    
+    //declarando e lendo o vetor:
     int n;
     printf("Tamanho do vetor: ");
     scanf("%d", &n);
 
+    //alocando a tal da memoria
     int* vetor = (int*) malloc(n * sizeof(int));
 
     int quantidade_de_pares   = 0;
